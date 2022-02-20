@@ -4,9 +4,16 @@ public class Main
 	public static void main(String[] args) 
 	{
     
-    //Rectangle Pattern.  
+//Rectangle Pattern.
+//     * * * *
+//     * * * *
+//     * * * *
+//     * * * *
+//     * * * *			
 	    Scanner sc = new Scanner(System.in);
-	    
+		    
+
+
 	    //different number of rows and different number of columns..
 	     //you can take rows and columns input from the user..
 	     int r = sc.nextInt();
