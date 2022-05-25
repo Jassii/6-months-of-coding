@@ -41,6 +41,37 @@ class Solution
     public static int equilibriumPoint(long arr[], int n) 
     {
         // Your code here
+        
+        int i;
+         long prefix[] = new long[n];
+         long suffix[] = new long[n];
+         
+         prefix[0] = arr[0];
+         for(i=1;i<n;i++)
+         {
+             prefix[i] = prefix[i-1]+arr[i];
+         }
+        
+         suffix[0] = prefix[n-1];
+         
+         for(i=1;i<n-1;i++)
+         {
+            suffix[i] = suffix[i-1]-arr[i-1]; 
+         }
+         
+         for(i=0;i<n;i++)
+         {
+             if(prefix[i]==suffix[i])
+             {
+                 return i+1;
+             }
+         }
+         return -1;
+        
+        
+        
+        
+        
         int i;
         long sum=0;
         long leftSum=0;
