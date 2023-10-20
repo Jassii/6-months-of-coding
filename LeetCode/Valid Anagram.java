@@ -18,5 +18,38 @@ class Solution
             return true;
         }
         return false;
+
+        
+        // ------------------------------------------------------------------------------------------
+
+
+            
+        if(a.length()!=b.length())
+        {
+            return false;
+        }
+        
+        int arr[] = new int[26];
+        int i;
+        for(i=0;i<a.length();i++)
+        {
+            int index = a.charAt(i)-'a';
+            arr[index] = arr[index]+1;
+        }
+        
+        for(i=0;i<b.length();i++)
+        {
+            int index = b.charAt(i)-'a';
+            arr[index] = arr[index]-1;
+        }
+        
+        for(i=0;i<26;i++)
+        {
+            if(arr[i]!=0)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 }
