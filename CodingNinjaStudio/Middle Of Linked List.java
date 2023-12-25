@@ -30,28 +30,44 @@ public class Solution
     public static Node findMiddle(Node head)
     {
         // Write your code here.
-        if(head==null || head.next==null)
+
+        //Optimized Approach
+
+     //taking slow and fast pointer..
+        Node slow = head;
+        Node fast = head;
+    
+        while(fast!=null && fast.next!=null)
         {
-            return head;
+            slow = slow.next;
+            fast = fast.next.next;
         }
 
-        int n = 1;
-        Node curr = head;
-        while(curr.next!=null)
-        {
-            curr = curr.next;
-            n++;
-        }
+        return slow;
 
-        int mid = (n/2)+1;  //3
-        curr = head; 
+        
+        // if(head==null || head.next==null)
+        // {
+        //     return head;
+        // }
+
+        // int n = 1;
+        // Node curr = head;
+        // while(curr.next!=null)
+        // {
+        //     curr = curr.next;
+        //     n++;
+        // }
+
+        // int mid = (n/2)+1;  //3
+        // curr = head; 
         
 
-        while(mid>1)
-        {
-            curr = curr.next;
-            mid--;
-        }
-        return curr;
+        // while(mid>1)
+        // {
+        //     curr = curr.next;
+        //     mid--;
+        // }
+        // return curr;
     }
 }
