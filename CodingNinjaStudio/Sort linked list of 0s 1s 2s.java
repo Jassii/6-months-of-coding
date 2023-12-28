@@ -45,18 +45,17 @@ public class Solution
             if(curr.data==0)
             {
                 countZ++;
-                curr = curr.next;
+                
             }
             else if(curr.data==1)
             {
                 countO++;
-                curr = curr.next;
             }
             else
             {
                 countT++;
-                curr = curr.next;
             }
+            curr = curr.next;
         }
 
         //now we have the count of 0s,1s and 2s..
@@ -66,29 +65,45 @@ public class Solution
         curr = head;
         while(curr!=null)
         {
-            while(countZ>0)
+            if(countZ>0)
             {
-                curr.data = 0;
+                curr.data=0;
                 countZ--;
-                curr = curr.next;
             }
-            //zero has been completed..
-
-            while(countO>0)
+            else if(countO>0)
             {
-                curr.data = 1;
+                curr.data=1;
                 countO--;
-                curr = curr.next;
             }
-            //similar for one..
-          
-            while(countT>0)
+            else
             {
-                curr.data = 2;
+                curr.data=2;
                 countT--;
-                curr = curr.next;
             }
-          //similar for two..
+            curr = curr.next;
+
+            // while(countZ>0)
+            // {
+            //     curr.data = 0;
+            //     countZ--;
+            //     curr = curr.next;
+            // }
+
+            // //zero has been completed
+
+            // while(countO>0)
+            // {
+            //     curr.data = 1;
+            //     countO--;
+            //     curr = curr.next;
+            // }
+
+            // while(countT>0)
+            // {
+            //     curr.data = 2;
+            //     countT--;
+            //     curr = curr.next;
+            // }
         }
         return head;
     }
