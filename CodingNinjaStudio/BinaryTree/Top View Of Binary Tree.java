@@ -24,7 +24,9 @@ public class Solution
 {
     public static List<Integer> getTopView(TreeNode root) 
     {
+        //result array list
         List<Integer> arr = new ArrayList<>();
+
         //if no node is there
         if(root==null)
         {
@@ -43,6 +45,7 @@ public class Solution
             }
         }
 
+        //queue which will maintain all the nodes
         Queue<Node> queue = new LinkedList<>();
 
         //add the root along with its height or we can say level.
@@ -54,8 +57,10 @@ public class Solution
         //traverse till the queue is empty
         while(!queue.isEmpty())
         {
+            //particular node(node and its height)
             Node temp = queue.poll();
-
+            
+            //if map does not contain that height
             if(!map.containsKey(temp.hd))
             {
                 map.put(temp.hd,temp.node);
@@ -81,8 +86,11 @@ public class Solution
         //traverse the map
         for(Map.Entry<Integer,TreeNode> m : map.entrySet())
         {
+            //add the node data in the array list
             arr.add(m.getValue().data);
         }
+        
+        //return the array list
         return arr;
     }
 }
