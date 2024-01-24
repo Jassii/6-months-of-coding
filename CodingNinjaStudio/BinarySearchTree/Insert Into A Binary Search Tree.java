@@ -28,22 +28,60 @@ public class Solution
 {
     public static TreeNode insertionInBST(TreeNode root, int val) 
     {
+        // =============OPTIMIZED APPROACH (O(log n))===========================================================
+        //i will traverse the binary search tree just like binary search
+        TreeNode curr = root;
+        TreeNode parent = null;
 
-        if(root==null)
+        while(curr!=null)
         {
-            root = new TreeNode(val);
-            return root;
+            //maintain the parent
+            parent = curr;
+            if(val<curr.val)
+            {
+                curr = curr.left;
+            }
+            else if(val>curr.val)
+            {
+                curr = curr.right;
+            }
         }
 
-        if(val<root.val)
+        //when curr reaches the null position
+        //there can be a chance that parent is not updated(when the
+        // tree is empty).
+        if(parent==null)
         {
-            root.left = insertionInBST(root.left,val);
-        }
-        if(val>root.val)
-        {
-            root.right = insertionInBST(root.right,val);
+            return new TreeNode(val);
         }
 
+        //parent is updated
+        if(val<parent.val)
+        {
+            parent.left = new TreeNode(val);
+        }
+        else if(val>parent.val)
+        {
+            parent.right = new TreeNode(val);
+        }
         return root;
+
+// =====================O(h)====================================================
+        // if(root==null)
+        // {
+        //     root = new TreeNode(val);
+        //     return root;
+        // }
+
+        // if(val<root.val)
+        // {
+        //     root.left = insertionInBST(root.left,val);
+        // }
+        // if(val>root.val)
+        // {
+        //     root.right = insertionInBST(root.right,val);
+        // }
+
+        // return root;
     }
 }
