@@ -1,23 +1,24 @@
 class Solution:
     def subsets(self, nums: List[int]) -> List[List[int]]:
-        
-        #result 2d list
+        #using recursion
         result = []
+        n = len(nums)
+        temp = []
+        self.helper(result,temp,0,nums)
+        return result
 
-        #for empty list
-        result.append([])
+    def helper(self,result,temp,start,nums):
+        if(start==len(nums)):
+            result.append(list(temp))
+            return
 
-        #now traverse the nums and store each value in list..and add it with list in result
-        for i in range(0,len(nums)):
-            arr = list()  
-            temp = []  #2d list which will be added with the final result list
-            arr.append(nums[i])
+        #recursive case
+        #include the current element
+        temp.append(nums[start])
+        self.helper(result,temp,start+1,nums)
 
-            #traverse the result
-            #fetch each list and append value of type list in temp 2d list
-            for l in result:
-                temp.append(l+arr)
-            #append the list values in one 2d list    
-            result = result + temp
+        #backtracking step
+        temp.pop()
 
-        return result             
+        #choice 2: exclude the current element
+        self.helper(result,temp,start+1,nums)         
